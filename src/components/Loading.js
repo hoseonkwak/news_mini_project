@@ -10,7 +10,7 @@ const Loading = () => {
   return (
     <>
       <LoadingWrap>
-        {/* <LoadingIcon width={30} height={30} /> */}
+        <LoadingIcon width={30} height={30} />
       </LoadingWrap>
     </>
   )

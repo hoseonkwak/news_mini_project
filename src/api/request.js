@@ -6,12 +6,12 @@ const request = async (url) => {
     console.log(response);
     if (response.status === 200) {
       const data = await response.data.response.docs;
-      console.log(data)
+      console.log(data);
       return data;
     }
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
 }
 
-export default request
+export default request;
