@@ -32,35 +32,65 @@ const SearchHistoryArea = styled.div`
   background-color: #eee;
 `;
 
-const Search = ({setQuery}) => {
+const Search = ({ setQuery }) => {
+  const savedSearchHistory = localStorage.getItem('searchHistory');
+  const initialSearchHis = savedSearchHistory ? JSON.parse(savedSearchHistory) : [];
   const [inputValue, setInputValue] = useState("");
-  const [searchTags, setSearchTags] = useState([]);
+  const [searchHistory, setSearchHistory] = useState(initialSearchHis);
   const inputRef = useRef(null);
+
+  const updateSearchInput = (value) => {
+    inputRef.current.value = value;
+  }
 
   const handleChangeSearch = (e) => {
     // console.log(e.target.value);
     setInputValue(e.target.value);
   };
+  // console.log(searchHistory);
 
   useEffect(() => {
     // console.log(setQuery);
-    if(inputValue === ""){
+    if (inputValue === "") {
       setQuery("");
     } else {
       const delay = setTimeout(() => {
-        console.log('start!! 검색어: ',inputValue);
+        console.log('start!! 검색어: ', inputValue);
         setQuery(inputValue);
-        // handleSearch();
+        //updateSearchInput('');  //검색창 초기화
+        setSearchHistory((prev) => {
 
-        //inputRef.current.value = '';  //검색창 초기화
-        // setSearchTags((prev) => [...prev, inputValue]);
-        localStorage.setItem((prev) => ['search', {inputValue}]);
+          return [inputValue, ...prev];
+        });
       }, 2000);
       return () => {
         clearTimeout(delay);
       };
     }
-  },[inputValue])
+  }, [inputValue])
+
+  const clickSearch = (history) => {
+    // 1. 현재 클릭 된 최근 검색어로 검색
+    setQuery(history);
+    // 2. 검색창 input 값 업데이트
+    updateSearchInput(history);
+  }
+
+  const deleteHistory = (idx) => {
+    const newSearchHistory = [...searchHistory];
+    newSearchHistory.splice(idx, 1);
+    setSearchHistory(newSearchHistory);
+  }
+
+  // localStorage
+  useEffect(() => {
+    // const set1 = new Set(searchHistory);
+    // if(set1.length >= 6){
+    //   set1.length = 5;
+    // }
+    // const set2 = [...set1];
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+  }, [searchHistory])
 
   return (
     <>
@@ -70,7 +100,15 @@ const Search = ({setQuery}) => {
         </SearchInputArea>
       </SerachBoxArea>
       <SearchHistoryArea>
-        <SearchHIstory />
+        {console.log('여기',searchHistory)}
+        {searchHistory.map((history, idx) => (
+          <SearchHIstory 
+            key={idx}
+            history={history}
+            searchHistory={() => {clickSearch(history);}}
+            deleteHistory={() => deleteHistory(idx)}
+          />
+        ))}
       </SearchHistoryArea>
     </>
   )

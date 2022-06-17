@@ -26,14 +26,16 @@ const TagLabel = styled.span`
     }
 `;
 
-// const C
-
-const SearchHIstory = ({value}) => {
+const SearchHIstory = ({history, searchHistory, deleteHistory}) => {
     return (
-      <Tag>
-          <TagLabel>{value}</TagLabel>
-          <FontAwesomeIcon icon={faTimes} size="lg" />
-      </Tag>
+        <Tag>
+        <TagLabel onClick={searchHistory}>{history}</TagLabel>
+        <FontAwesomeIcon 
+            icon={faTimes}
+            size="lg"
+            onClick={deleteHistory}
+        />
+        </Tag>
     );
 };
 
