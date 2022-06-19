@@ -44,9 +44,9 @@ const ResultContainer = ({data}) => {
             </LiArticleList>
           )): <EmptyResult/>}
         </UlArticleWrap>
-        <LoadingWrap>
+        {/* <LoadingWrap>
           <LoadingIcon width={30} height={30} />
-        </LoadingWrap>
+        </LoadingWrap> */}
       </Container>
     </>
   )
