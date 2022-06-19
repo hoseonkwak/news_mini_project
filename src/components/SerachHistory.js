@@ -7,7 +7,7 @@ const Tag = styled.div`
     display: inline-block;
     font-size: 14px;
     border-radius: 16px;
-    padding: 6px 10px;
+    padding: 6px 16px;
     color: #fff;
     background-color: skyblue;
     cursor: pointer;

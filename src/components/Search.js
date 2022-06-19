@@ -8,13 +8,11 @@ const SerachBoxArea = styled.div`
   justify-content: center;
   margin-bottom: 20px;
 `;
-
 const SearchInputArea = styled.div`
   width: 80%;
   display: flex;
   justify-content: center;
-`
-
+`;
 const SearchInput = styled.input`
   width: 100%;
   max-width: 800px;
@@ -25,13 +23,14 @@ const SearchInput = styled.input`
   padding: 0 10px;
   border-radius: 5px;
 `;
-
 const SearchHistoryArea = styled.div`
   width: 100%;
   height: 60px;
-  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #eee; */
 `;
-
 const Search = ({ setQuery }) => {
   const savedSearchHistory = localStorage.getItem('searchHistory');
   const initialSearchHis = savedSearchHistory ? JSON.parse(savedSearchHistory) : [];
@@ -58,9 +57,15 @@ const Search = ({ setQuery }) => {
         console.log('start!! 검색어: ', inputValue);
         setQuery(inputValue);
         //updateSearchInput('');  //검색창 초기화
+        // 중복 제거 및 최대 검색어 5개까지
         setSearchHistory((prev) => {
-
-          return [inputValue, ...prev];
+          const overlapDel = new Set([inputValue, ...prev]);
+          const overlapDelArr = [...overlapDel];
+          console.log(overlapDelArr);
+          if(overlapDelArr.length >= 5){
+            overlapDelArr.length = 5;
+          }
+          return overlapDelArr;
         });
       }, 2000);
       return () => {

@@ -33,7 +33,7 @@ const ResultContainer = ({data}) => {
     <>
       <Container>
         <UlArticleWrap className="articleWrap">
-          {console.log('0',data)}
+          {/* {console.log('0',data)} */}
           {data.length > 0 ? data.map((article, idx) => (
             <LiArticleList key={article._id}>
               <NewsItem article={article} idx={idx} />

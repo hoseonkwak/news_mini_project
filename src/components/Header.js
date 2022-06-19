@@ -5,7 +5,7 @@ import Search from './Search';
 const Container = styled.div`
   position: relative;
   width: 100%;
-  margin: 20px 0;
+  margin: 20px 0 0;
 `;
 
 const Logo = styled.h1`

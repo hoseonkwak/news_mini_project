@@ -12,8 +12,8 @@ function App() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    console.log('1',query);
-    console.log('2',data.length===0);
+    // console.log('1',query);
+    // console.log('2',data.length===0);
     if(query === ""){ // 검색어가 없으면 종료
       return;
     }else{
@@ -22,8 +22,8 @@ function App() {
           q: query, // 검색어
         });
         setData(data);
-        console.log(data);
-        console.log(query);
+        // console.log(data);
+        // console.log(query);
       }
       call();
     }

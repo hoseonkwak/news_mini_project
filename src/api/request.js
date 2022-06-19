@@ -3,10 +3,10 @@ import axios from 'axios'
 const request = async (url) => {
   try {
     const response = await axios(url);
-    console.log(response);
+    // console.log(response);
     if (response.status === 200) {
       const data = await response.data.response.docs;
-      console.log(data);
+      // console.log(data);
       return data;
     }
   } catch (e) {
