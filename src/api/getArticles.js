@@ -6,8 +6,8 @@ const defaultParam = {
 }
 
 const getArticles = async (paramObj) => {
-  // console.log('3', paramObj);
   const params = new URLSearchParams({...defaultParam, ...paramObj}).toString();
+  console.log('params', params);
   const result = await request(`${BASE_URL}/?${params}`);
   return result;
 }

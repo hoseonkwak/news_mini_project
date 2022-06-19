@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import EmptyResult from './EmptyResult';
-import Loading from './Loading';
 import NewsItem from './NewsItem';
+import { ReactComponent as LoadingIcon } from '../asset/loading.svg';
 
 const Container = styled.div`
   max-width: 1830px;
@@ -27,6 +27,10 @@ const LiArticleList = styled.li`
   width: 100%;
   box-sizing: border-box;
 `;
+const LoadingWrap = styled.div`
+  width: 100%;
+  margin: 20px auto;
+`;
 
 const ResultContainer = ({data}) => {
   return (
@@ -40,7 +44,9 @@ const ResultContainer = ({data}) => {
             </LiArticleList>
           )): <EmptyResult/>}
         </UlArticleWrap>
-        <Loading />
+        <LoadingWrap>
+          <LoadingIcon width={30} height={30} />
+        </LoadingWrap>
       </Container>
     </>
   )

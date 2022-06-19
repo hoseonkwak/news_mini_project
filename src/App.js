@@ -10,6 +10,7 @@ import EmptyResult from './components/EmptyResult';
 function App() {
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     // console.log('1',query);
@@ -20,6 +21,7 @@ function App() {
       const call = async () => {
         const data = await getArticles({
           q: query, // 검색어
+          page: page,
         });
         setData(data);
         // console.log(data);
@@ -27,12 +29,16 @@ function App() {
       }
       call();
     }
-  }, [query])
+  }, [query, page])
+
+  const nextClick = () => {
+    setPage((prev) => prev + 1);
+  }
   return (
     <>
       <Header setQuery={setQuery} />
       {data.length !== 0 ? <ResultContainer data={data} /> : <EmptyResult />}
-      
+      <button onClick={nextClick}>next</button>
       <Footer />
     </>
   );

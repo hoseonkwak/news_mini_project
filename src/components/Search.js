@@ -105,7 +105,6 @@ const Search = ({ setQuery }) => {
         </SearchInputArea>
       </SerachBoxArea>
       <SearchHistoryArea>
-        {console.log('여기',searchHistory)}
         {searchHistory.map((history, idx) => (
           <SearchHIstory 
             key={idx}
