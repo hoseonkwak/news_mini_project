@@ -6,6 +6,7 @@ const EmptyResultContainer = styled.div`
   padding: 16px 0;
   line-height: 1.3;
   color: #000;
+  min-height: calc(100vh - 320px);
 `;
 
 const EmptyResult = () => {

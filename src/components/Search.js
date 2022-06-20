@@ -89,11 +89,6 @@ const Search = ({ setQuery }) => {
 
   // localStorage
   useEffect(() => {
-    // const set1 = new Set(searchHistory);
-    // if(set1.length >= 6){
-    //   set1.length = 5;
-    // }
-    // const set2 = [...set1];
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
   }, [searchHistory])
 
