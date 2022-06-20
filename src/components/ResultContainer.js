@@ -16,6 +16,9 @@ const UlArticleWrap = styled.ul`
   margin: 0 auto;
   box-sizing: border-box;
   padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 const LiArticleList = styled.li`
   list-style: none;
@@ -23,7 +26,19 @@ const LiArticleList = styled.li`
   align-items: center;
   margin-bottom: 10px;
   width: 100%;
+  height: 420px;
   box-sizing: border-box;
+  width: 23%;
+  flex-direction: column;
+  box-shadow: 0 0 7px 0 rgb(0 0 0 / 30%);
+  margin: 0 10px 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all .3s ease;
+  &:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 2px 7px 0 rgb(0 0 0 / 30%);
+  }
 `;
 const LoadingWrap = styled.div`
   width: 100%;
