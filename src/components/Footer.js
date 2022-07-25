@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 const FooterWrap = styled.footer`
-  height: calc(100vh - 880px);
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 14px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ddd;
 `;
 
 const Footer = () => {
