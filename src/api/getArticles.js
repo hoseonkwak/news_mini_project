@@ -14,3 +14,4 @@ const getArticles = async (paramObj) => {
 }
 
 export default getArticles;
+
